@@ -1,0 +1,24 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+<h3>{{pinfo.name}}</h3>
+<p>ID: {{pinfo.id}}</p>
+<p>Altura: {{pinfo.height}}</p>
+<p>Tipos: 
+    {% for type in pinfo.types %}
+        {{ type }}{% if not loop.last %}, {% endif %}
+    {% endfor %}
+</p>
+<p>Habilidades: 
+    {% for ability in pinfo.abilities %}
+        {{ ability }}{% if not loop.last %}, {% endif %}
+    {% endfor %}
+</p>
+<p>Sprite:</p>
+<img src="{{ pinfo.sprite }}" alt="{{ pinfo.name }} sprite" />
+<p>Sprite shiny:</p>
+<img src="{{ pinfo.sprite_shiny }}" alt="{{ pinfo.name }} sprite shiny" />
+
+
+{% endblock content %}

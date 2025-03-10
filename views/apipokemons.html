@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main-panel">
+    <span class="subtitle">Pokémons: </span>
+
+    <div class="pokemon-panel">
+        {% for pokemon in pokemonsjson %}
+            <a href="{{url_for('apipokemons', nome=pokemon.name)}}" class="pokemon-item">
+                <p><strong>{{ pokemon.name }}</strong>
+                    <p>Tipos: 
+                        {% for type in pokemon.types %}
+                            {{ type }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                </p>
+                <img src="{{ pokemon.sprite }}" alt="{{ pokemon.name }} sprite" />
+            </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

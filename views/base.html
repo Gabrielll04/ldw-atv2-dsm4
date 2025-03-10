@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/style.css')}}"
+    />
+    <title>The Pokemon</title>
+</head>
+<body>  
+  <div class="navbar">
+    <a href="{{url_for('home')}}">Página Principal</a>
+    <h1 >The Pokemon</h1>
+  </div>
+  {% block content %}
+  <!-- Aqui irá o conteúdo das demais páginas -->
+  {% endblock content %}
+</body>
+</html>
