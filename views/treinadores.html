@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main-panel">
+    <span class="subtitle">O pokemon {{pokemon.nome}} do tipo {{pokemon.tipo}} é treinado por:</span>
+    
+    <ol>
+        {% for trainer in trainers: %}
+        <li>{{trainer}}</li>
+        {% endfor %}
+    </ol>
+
+    <form class="submit-pokemon-form" 
+          action="{{url_for('treinadores')}}"
+          method="POST"
+    >
+        <label>Treinador:</label>
+        <input type="text" name="treinador"/>
+        <input type="submit" value="Entrar">
+    </form>
+
+    <div class="pokemon-panel">
+        {% for k, v in pokemon.items() %}
+        {{k}} : {{v}}<br>
+        {% endfor %}
+    </div>
+<div>
+
+{% endblock content %}

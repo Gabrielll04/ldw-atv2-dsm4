@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main-panel">
+    <span class="subtitle">Editar pokemon: </span>
+
+    <form class="submit-pokemon-form" action="{{url_for('edit', id=p.id)}}" method="POST">
+        <label>Nome:</label>
+        <input type="text" name="nome" value="{{p.nome}}" required>
+        <label>Tipo:</label>
+        <input type="text" name="tipo" value="{{p.tipo}}" required>
+        <a href="{{url_for('edit', id=p.id)}}" onclick="return confirm('Confirma as alterações?')"><input type="submit" value="Alterar"></a>
+        <a href="{{url_for('pokemons')}}"><input type="submit" value="Cancelar"></a>
+    </form>
+<div>
+
+{% endblock content %}

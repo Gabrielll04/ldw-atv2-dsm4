@@ -2,28 +2,36 @@
 
 {% block content %}
 <div class="main-panel">
-    <span class="subtitle">O pokemon {{pokemon.nome}} do tipo {{pokemon.tipo}} é treinado por:</span>
-    
-    <ol>
-        {% for treinador in treinadores: %}
-        <li>{{treinador}}</li>
-        {% endfor %}
-    </ol>
+    <span class="subtitle">Cadastro de Pokemons: </span>
 
-    <form class="submit-pokemon-form" 
-          action="{{url_for('pokemons')}}"
-          method="POST"
-    >
-        <label>Treinador:</label>
-        <input type="text" name="treinador"/>
-        <input type="submit" value="Entrar">
+    <form class="submit-pokemon-form" action="{{url_for('pokemons')}}" method="POST">
+        <label>Nome:</label>
+        <input type="text" name="nome" required>
+        <label>Tipo:</label>
+        <input type="text" name="tipo" required>
+        <input type="submit" value="Cadastrar">
     </form>
-
-    <div class="pokemon-panel">
-        {% for k, v in pokemon.items() %}
-        {{k}} : {{v}}<br>
-        {% endfor %}
-    </div>
 <div>
+
+<div class="pokemon-panel">
+    {% for pokemon in pokemonlist.items %}
+        <tr>
+            <td>Nome pokemon: {{pokemon.nome}}</td><br/>
+            <td>Tipo pokemon: {{pokemon.tipo}}</td>
+            <td><a href="{{url_for('edit', id=pokemon.id)}}">Editar</a></td>
+            <td><a href="{{url_for('pokemons', id=pokemon.id)}}" onclick="return confirm('Deseja mesmo excluir o pokemon {{pokemon.nome}}?')">Excluir</a></td>
+            <br/><br/><br/>
+        </tr>
+    {% endfor %}
+
+    <p sstyle="text-align: center;">
+        {% if pokemonlist.has_prev %}
+            <a href="{{url_for('pokemons', page=pokemonlist.prev_num)}}"><< Anterior</a>
+        {% endif %}
+        {% if pokemonlist.has_next %}
+             <a href="{{url_for('pokemons', page=pokemonlist.next_num)}}">Próximo >></a>
+    </p>
+        {% endif %}
+</div>
 
 {% endblock content %}
